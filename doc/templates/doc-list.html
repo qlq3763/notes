@@ -1,11 +1,20 @@
 {% extends 'bootstrap_base.html' %}
+{% load staticfiles %}
+
+
 
 {% block body %}
 <div style="height: 10px;"> </div>
 
 <ul class="list-group">
     {% for doc in docs %}
-    <li><a href="/doc/{{ doc.slug }}"> {{ doc.title }} </a></li>
+    <li class="list-group-item">
+        <a href="/doc/{{ doc.slug }}"> {{ doc.title }} </a>
+    </li>
     {% endfor %}
 </ul>
+
+<div class="add">
+    <a class="btn btn-primary" href="/doc/add" role="button" styles="{width: 100%}">添加</a>
+</div>
 {% endblock %}

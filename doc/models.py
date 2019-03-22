@@ -11,5 +11,5 @@ class Doc(models.Model):
     slug = models.SlugField(max_length=100, allow_unicode=True, unique=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)

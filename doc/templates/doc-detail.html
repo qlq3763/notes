@@ -1,0 +1,38 @@
+{% extends 'bootstrap_base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'editor.md/css/editormd.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/note.css' %}">
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'editor.md/editormd.min.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+
+    <div class="doc-title">
+        <input type="text" class="form-control" name="title" value="{{ doc.title }}">
+    </div>
+
+    <div class="doc-content">
+        <div id="editor">
+            <textarea style="display:none;" name="content">{{ doc.content }} </textarea>
+        </div>
+    </div>
+
+    <div class="save">
+        <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+</form>
+
+<script type="text/javascript">
+$(function() {
+            var editor = editormd("editor", {
+                path: "/static/editor.md/lib/",
+                tocm: true,
+        });
+});
+</script>
+{% endblock %}

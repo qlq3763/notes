@@ -9,19 +9,29 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <div id="doc-content">
-        <textarea style="display:none;">{{ doc.content }}</textarea>
-    </div>
-</div>
+<form method="post">
+    {% csrf_token %}
 
-<div class="save">
-    <button type="button" class="btn btn-primary">保存</button>
-</div>
+    <div class="doc-title">
+        <input type="text" class="form-control" name="title" value="">
+    </div>
+
+    <div class="doc-content">
+        <div id="editor">
+            <textarea style="display:none;" name="content"></textarea>
+        </div>
+    </div>
+
+    <div class="save">
+        <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+</form>
 
 <script type="text/javascript">
-            var editor = editormd("doc-content", {
+$(function() {
+            var editor = editormd("editor", {
                 path: "/static/editor.md/lib/" // Autoload modules mode, codemirror, marked... dependents libs path
         });
+});
 </script>
 {% endblock %}
