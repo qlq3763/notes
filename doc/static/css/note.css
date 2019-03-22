@@ -1,15 +1,7 @@
 .content {
     height: 93%;
-    width: 80%;
+    width: 100%;
     float: left;
-}
-
-.tags {
-    height: 93%;
-    width: 19%;
-    border-style: solid;
-    border-width: 1px;
-    float: right;
 }
 
 html, body { height: 100% }

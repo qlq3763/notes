@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import Doc, Tag
+from .models import Doc
 
 admin.site.register(Doc)
-admin.site.register(Tag)
