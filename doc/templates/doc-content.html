@@ -1,0 +1,30 @@
+{% extends 'bootstrap_base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'editor.md/css/editormd.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/note.css' %}">
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'editor.md/editormd.min.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div id="doc-content">
+        <textarea style="display:none;">{{ doc.content }}</textarea>
+    </div>
+</div>
+
+<div id="doc-tags" class="tags">
+</div>
+
+<div class="save">
+    <button type="button" class="btn btn-primary">保存</button>
+</div>
+
+<script type="text/javascript">
+            var editor = editormd("doc-content", {
+                path: "/static/editor.md/lib/" // Autoload modules mode, codemirror, marked... dependents libs path
+        });
+</script>
+{% endblock %}
